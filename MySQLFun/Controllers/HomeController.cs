@@ -20,12 +20,17 @@ namespace MySQLFun.Controllers
         //----------------------------------------------------------
         //----------------------------------------------------------
         
-        public HomeController()
+        private RecipesDbContext _miContextico { get; set; }
+        public HomeController(RecipesDbContext temp)
         {
+            _miContextico = temp;
         }
         public IActionResult Index()
         {
-            return View();
+
+            var blah = _miContextico.Recipes.ToList();
+
+            return View(blah);
         }
 
 
